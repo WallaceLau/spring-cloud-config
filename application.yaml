@@ -1,10 +1,10 @@
 eureka:
   instance:
-    non-secure-port: ${EXPOSED_PORT}
+    non-secure-port: ${EXPOSED_PORT:server.port}
     preferIpAddress: true
-    hostname: ${HOST_NAME}
-    metadataMap.management.port: ${EXPOSED_PORT}
-    health-check-url: ${HOST_NAME}:${EXPOSED_PORT}/actuator/health
+    hostname: ${HOST_NAME:localhost}
+    metadataMap.management.port: ${non-secure-port}
+    health-check-url: ${hostname}:${non-secure-port}/actuator/health
   client:
     fetch-registry: true
     register-with-eureka: true
