@@ -1,7 +1,10 @@
 eureka:
   instance:
-    prefer-ip-address: true
-    hostname: localhost
+    non-secure-port: ${EXPOSED_PORT}
+    preferIpAddress: true
+    hostname: ${HOST_NAME}
+    metadataMap.management.port: ${EXPOSED_PORT}
+    health-check-url: ${HOST_NAME}:${EXPOSED_PORT}/actuator/health
   client:
     fetch-registry: true
     register-with-eureka: true
